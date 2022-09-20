@@ -1,5 +1,5 @@
 const http = require('http');
-const url = require('url');
+const {handleReqRes} = require('./helpers/handleReqRes');
 
 // app object - module scaffolding
 const app = {};
@@ -17,17 +17,6 @@ app.createServer = () => {
     });
 }
 
-app.handleReqRes = (req, res) => {
-    //request handle
-    //get the url and parse it
-    debugger
-    const parseUrl = url.parse(req.url, true);
-    const path = parseUrl.pathname;
-    const trimmedPath = path.replace(/^\/+|\/+$/g,'');
-    console.log(path); 
-    console.log('trimmedPath', trimmedPath); 
-    //response handle
-    res.end('Hello world 2'); //
-}
+app.handleReqRes = handleReqRes;
 
 app.createServer();
